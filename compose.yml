@@ -1,0 +1,16 @@
+services:
+  claude:
+    build: .
+    container_name: esp8266-traffic-light-claude
+    stdin_open: true
+    tty: true
+    working_dir: /workspace
+    volumes:
+      - .:/workspace
+      - pio-cache:/home/node/.platformio
+    environment:
+      - TERM=xterm-256color
+    network_mode: bridge
+
+volumes:
+  pio-cache:
