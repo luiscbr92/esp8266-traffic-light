@@ -1,18 +1,22 @@
 #include <Arduino.h>
-
-// put function declarations here:
-int myFunction(int, int);
+#include "wifi_setup.h"
+#include "web_server.h"
+#include "light.h"
 
 void setup() {
-  // put your setup code here, to run once:
-  int result = myFunction(2, 3);
+    Serial.begin(115200);
+    delay(100);
+    Serial.println();
+    Serial.println("booting focus light");
+
+    light_setup();
+    light_set(LightState::OFF);
+
+    if (wifi_connect()) {
+        web_setup();
+    }
 }
 
 void loop() {
-  // put your main code here, to run repeatedly:
-}
-
-// put function definitions here:
-int myFunction(int x, int y) {
-  return x + y;
+    web_loop();
 }
