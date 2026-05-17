@@ -6,11 +6,13 @@ services:
     tty: true
     working_dir: /workspace
     volumes:
-      - .:/workspace
+      - ${WORKSPACE_PATH:-.}:/workspace
       - pio-cache:/home/node/.platformio
     environment:
       - TERM=xterm-256color
     network_mode: bridge
+    security_opt:
+      - no-new-privileges:true
 
 volumes:
   pio-cache:
