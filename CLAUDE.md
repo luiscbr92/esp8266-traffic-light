@@ -15,7 +15,14 @@ pio run                   # compile only
 pio run -t upload         # compile and flash over USB
 pio device monitor        # open serial monitor at 115200 baud
 pio run -t clean          # clean build artifacts
+pio test -e native        # run unit tests on the host (requires gcc/g++)
 ```
+
+## Development workflow
+
+1. **Plan** — before writing any code, write a plan and present it to the user.
+2. **Approve** — wait for explicit approval (or refinement) before implementing.
+3. **TDD** — write failing tests first, confirm they fail, then implement to make them pass.
 
 ## Development environment
 
